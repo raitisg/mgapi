@@ -1,0 +1,31 @@
+{
+    "name": "raitisg/mgapi",
+    "description": "Mailigen PHP API wrapper",
+    "keywords": [
+        "mgapi",
+        "Mailigen"
+    ],
+    "homepage": "https://github.com/raitisg/mgapi",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raitis G",
+            "email": "raitis@10it.lv",
+            "homepage": "https://10it.lv",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mailigen\\MGAPI\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
