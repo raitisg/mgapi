@@ -36,7 +36,7 @@ class MGAPI {
      * Pieslegties pie Mailigen API
      *
      * @param string $apikey Jusu Mailigen API atslega
-     * @param string $secure Izmantot vai neizmantot ssl piesleganos
+     * @param bool $secure Izmantot vai neizmantot ssl piesleganos
      */
     function __construct($apikey, $secure = false) {
         $this->secure = $secure;
