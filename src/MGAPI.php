@@ -8,7 +8,7 @@ class MGAPI {
     var $errorCode;
 
     /**
-     * API server adrese
+     * API server address
      */
     var $apiUrl;
 
@@ -23,45 +23,33 @@ class MGAPI {
     var $chunkSize = 8192;
 
     /**
-     * Lietotaja API atslega
+     * User API key
      */
     var $api_key;
 
     /**
-     * Izmantot ssl: false - ne, true - ja
-     */
-    var $secure = false;
-
-    /**
-     * Pieslegties pie Mailigen API
+     * Connect to Mailigen API
      *
-     * @param string $apikey Jusu Mailigen API atslega
-     * @param bool $secure Izmantot vai neizmantot ssl piesleganos
+     * @param string $apikey Your Mailigen API key
      */
-    function __construct($apikey, $secure = false) {
-        $this->secure = $secure;
-        $this->apiUrl = parse_url("http://api.mailigen.com/" . $this->version . "/?output=php");
+    function __construct($apikey) {
+        $this->apiUrl = parse_url("https://api.mailigen.com/" . $this->version . "/?output=php");
         if ( isset($GLOBALS["mg_api_key"]) && $GLOBALS["mg_api_key"]!="" ){
             $this->api_key = $GLOBALS["mg_api_key"];
         } else {
             $this->api_key = $GLOBALS["mg_api_key"] = $apikey;
         }
     }
+
     function setTimeout($seconds){
         if (is_int($seconds)){
             $this->timeout = $seconds;
             return true;
         }
     }
+
     function getTimeout(){
         return $this->timeout;
-    }
-    function useSecure($val){
-        if ($val === true){
-            $this->secure = true;
-        } else {
-            $this->secure = false;
-        }
     }
 
 	/**
@@ -1778,11 +1766,8 @@ class MGAPI {
 		$payload .= $post_vars;
 
 		ob_start();
-		if ($this->secure){
-			$sock = fsockopen("ssl://".$host, 443, $errno, $errstr, 30);
-		} else {
-			$sock = fsockopen($host, 80, $errno, $errstr, 30);
-		}
+		$sock = fsockopen("ssl://".$host, 443, $errno, $errstr, 30);
+
 		if(!$sock) {
 			$this->errorMessage = "Could not connect (ERR $errno: $errstr)";
 			$this->errorCode = "-99";
@@ -1851,5 +1836,3 @@ class MGAPI {
 		}
 	}
 }
-
-?>
