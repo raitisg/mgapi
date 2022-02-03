@@ -4,7 +4,8 @@ Composer repo for the PHP API wrapper of Mailigen.com. Read more at: [https://de
 
 ### Installation
 
-Installation via [Composer](https://getcomposer.org/) is the recommended way to install MGAPI. Just run next command: :
+Installation via [Composer](https://getcomposer.org/) is the recommended way to install MGAPI. Just run next command:
+
 ```bash
 composer require raitisg/mgapi
 ```
@@ -12,6 +13,7 @@ composer require raitisg/mgapi
 ### Usage
 
 Use where needed like so:
+
 ```php
 <?php
 
